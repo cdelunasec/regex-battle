@@ -1,0 +1,396 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  /* Lo que pinta el navegador por su cuenta (barras de desplazamiento, menus
+     nativos) sigue a color-scheme, no a nuestras variables. */
+  color-scheme: light;
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.129 0.042 264.695);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.129 0.042 264.695);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 264.695);
+  --primary: oklch(0.208 0.042 265.755);
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: oklch(0.208 0.042 265.755);
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --accent: oklch(0.968 0.007 247.896);
+  --accent-foreground: oklch(0.208 0.042 265.755);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --success: oklch(0.646 0.17 152.5);
+  --success-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.929 0.013 255.508);
+  --input: oklch(0.929 0.013 255.508);
+  --ring: oklch(0.704 0.04 256.788);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+.dark {
+  color-scheme: dark;
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --success: oklch(0.7 0.18 152.5);
+  --success-foreground: oklch(0.18 0.02 152);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+}
+
+
+/* ---------------------------------------------------------------------------
+ * Combate.
+ *
+ * Los personajes son PNG con transparencia en public/fighters, con una pose
+ * dibujada para cada estado. Las animaciones de aqui NO intentan simular la
+ * pose, eso ya lo hace el dibujo: lo que hacen es darle peso al momento, el
+ * retroceso al disparar, el empujon al recibir, el temblor del impacto.
+ *
+ * El personaje de la derecha se voltea con scaleX(-1) en un elemento de fuera,
+ * y las animaciones van en uno de dentro. Asi un mismo keyframe sirve para los
+ * dos: mover en X negativo es "hacia atras" para cada uno desde su punto de
+ * vista, sin necesidad de escribir cada animacion dos veces.
+ *
+ * El prefijo rb- evita chocar con las utilidades de Tailwind.
+ * ------------------------------------------------------------------------- */
+
+@keyframes rb-idle {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(-0.6deg);
+  }
+}
+
+/* Retroceso: primero se va hacia atras de golpe, luego vuelve amortiguando. */
+@keyframes rb-shoot {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  12% {
+    transform: translate(-22px, -4px) rotate(3deg);
+  }
+  38% {
+    transform: translate(6px, 0) rotate(-1.5deg);
+  }
+  62% {
+    transform: translate(-4px, 0) rotate(0.5deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+/* Recibir: sale despedido hacia atras y regresa tambaleando. */
+@keyframes rb-hit {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  18% {
+    transform: translate(-40px, -14px) rotate(11deg);
+  }
+  45% {
+    transform: translate(-14px, 4px) rotate(-5deg);
+  }
+  72% {
+    transform: translate(-4px, 0) rotate(2deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+/* Derrotado: mareado, un bamboleo lento que no para. */
+@keyframes rb-ko {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(2px) rotate(3deg);
+  }
+}
+
+/* El fogonazo del canon. */
+@keyframes rb-muzzle {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.3);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.2);
+  }
+}
+
+/* El disparo cruzando la pantalla, estirado en la direccion en que viaja. */
+@keyframes rb-shot-to-right {
+  0% {
+    left: 28%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scaleX(0.6);
+  }
+  12% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scaleX(2.6);
+  }
+  88% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scaleX(2.6);
+  }
+  100% {
+    left: 72%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scaleX(0.8);
+  }
+}
+
+@keyframes rb-shot-to-left {
+  0% {
+    left: 72%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scaleX(0.6);
+  }
+  12% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scaleX(2.6);
+  }
+  88% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scaleX(2.6);
+  }
+  100% {
+    left: 28%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scaleX(0.8);
+  }
+}
+
+/* El destello donde pega. */
+@keyframes rb-impact {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.2);
+  }
+  25% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.4);
+  }
+}
+
+@keyframes rb-damage-float {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 10px) scale(0.7) rotate(-6deg);
+  }
+  18% {
+    opacity: 1;
+    transform: translate(-50%, -10px) scale(1.25) rotate(3deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -58px) scale(1) rotate(-2deg);
+  }
+}
+
+/* Todo el escenario tiembla cuando conecta un golpe. */
+@keyframes rb-shake {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  15% {
+    transform: translate(-6px, 3px);
+  }
+  30% {
+    transform: translate(5px, -3px);
+  }
+  45% {
+    transform: translate(-4px, -2px);
+  }
+  60% {
+    transform: translate(3px, 2px);
+  }
+  80% {
+    transform: translate(-2px, 0);
+  }
+}
+
+.rb-idle {
+  animation: rb-idle 2.8s ease-in-out infinite;
+}
+.rb-shoot {
+  animation: rb-shoot 620ms cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+.rb-hit {
+  animation: rb-hit 700ms cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+.rb-ko {
+  animation: rb-ko 2.2s ease-in-out infinite;
+}
+.rb-mirror {
+  transform: scaleX(-1);
+}
+.rb-muzzle {
+  animation: rb-muzzle 320ms ease-out forwards;
+}
+.rb-shot-to-right {
+  animation: rb-shot-to-right 480ms linear forwards;
+}
+.rb-shot-to-left {
+  animation: rb-shot-to-left 480ms linear forwards;
+}
+.rb-impact {
+  animation: rb-impact 520ms ease-out forwards;
+}
+.rb-damage {
+  animation: rb-damage-float 1200ms ease-out forwards;
+}
+.rb-shake {
+  animation: rb-shake 420ms ease-in-out;
+}
+
+/* Quien pide menos movimiento recibe el resultado, no el viaje. El estado del
+ * combate siempre se puede leer en las poses, en las barras y en el texto. */
+@media (prefers-reduced-motion: reduce) {
+  .rb-idle,
+  .rb-shoot,
+  .rb-hit,
+  .rb-ko,
+  .rb-shake,
+  .rb-shot-to-right,
+  .rb-shot-to-left {
+    animation: none;
+  }
+  .rb-muzzle,
+  .rb-impact,
+  .rb-damage {
+    animation-timing-function: step-end;
+  }
+}

@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk.WebAssembly">
+
+  <!--
+    El compilador de C# corriendo en el navegador.
+
+    Es el SDK de WebAssembly sin Blazor: no pinta nada, solo expone funciones a
+    JavaScript con [JSExport]. Se publica aquí con `npm run build:csharp`, y lo
+    que sale se copia a public/csharp, para que el
+    despliegue no necesite .NET.
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
+    <OutputType>Exe</OutputType>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+    <!--
+      Roslyn necesita las librerías como PE de verdad para usarlas de
+      referencia. Con webcil, que es el formato por defecto en .NET 8, llegan
+      envueltas y MetadataReference no las puede leer.
+    -->
+    <WasmEnableWebcil>false</WasmEnableWebcil>
+
+    <!--
+      Nada de recortar. El recortador quita las APIs que este proyecto no usa,
+      y el código del jugador puede usar cualquiera: un List.Reverse que se
+      quedó fuera daría un error de compilación que no es culpa suya.
+    -->
+    <PublishTrimmed>false</PublishTrimmed>
+
+    <!--
+      Globalización real, pero solo con los datos de los idiomas occidentales.
+
+      Hace falta para que el compilador dé sus errores en español: en modo
+      invariante `new CultureInfo("es")` lanza, y sin cultura española Roslyn
+      no busca sus mensajes traducidos. El archivo EFIGS trae inglés, francés,
+      italiano, alemán y español en poco más de un mega, en vez del ICU entero.
+    -->
+    <InvariantGlobalization>false</InvariantGlobalization>
+    <WasmIcuDataFileName>icudt_EFIGS.dat</WasmIcuDataFileName>
+
+    <!--
+      Roslyn trae sus mensajes traducidos a trece idiomas. Solo hace falta el
+      español: el resto son carpetas que nadie va a descargar.
+    -->
+    <SatelliteResourceLanguages>es</SatelliteResourceLanguages>
+
+    <!-- Sin copias .br y .gz: el hosting no las sirve comprimidas y solo pesan. -->
+    <CompressionEnabled>false</CompressionEnabled>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.11.0" />
+  </ItemGroup>
+
+</Project>

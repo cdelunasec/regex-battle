@@ -1,0 +1,5 @@
+project_id = "jdivavcvvymlnoislvhu"
+# submit-regex lee la sesion del JWT para saber quien envia, asi que la
+# plataforma debe exigirlo antes de invocarla.
+[functions.submit-regex]
+verify_jwt = true

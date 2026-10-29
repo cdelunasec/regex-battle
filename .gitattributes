@@ -1,0 +1,6 @@
+# El compilador de C# publicado se guarda byte por byte.
+#
+# blazor.boot.json lleva el hash SHA-256 de cada archivo del runtime. Si git
+# cambiara los saltos de linea de dotnet.js al hacer checkout en Windows, el
+# archivo ya no casaria con su hash y el navegador se negaria a cargarlo.
+public/csharp/** -text
